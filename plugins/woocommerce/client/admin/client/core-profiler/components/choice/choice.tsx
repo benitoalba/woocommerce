@@ -34,21 +34,13 @@ export const Choice = ( {
 
 	return (
 		<div
-			role="radio"
 			className={ clsx(
 				'woocommerce-profiler-choice-container',
 				className
 			) }
-			onClick={ changeHandler }
-			onKeyDown={ ( e ) => {
-				if ( e.key === 'Enter' ) {
-					changeHandler();
-				}
-			} }
 			data-selected={ selected ? selected : null }
-			tabIndex={ 0 }
 		>
-			<div className="woocommerce-profiler-choice">
+			<label htmlFor={ inputId } className="woocommerce-profiler-choice">
 				<input
 					className="woocommerce-profiler-choice-input"
 					id={ inputId }
@@ -58,13 +50,9 @@ export const Choice = ( {
 					checked={ !! selected }
 					onChange={ changeHandler }
 					data-selected={ selected ? selected : null }
-					// Stop the input from being focused when the parent div is clicked
-					tabIndex={ -1 }
 				></input>
-				<label htmlFor={ inputId } className="choice__title">
-					{ title }
-				</label>
-			</div>
+				<span className="choice__title">{ title }</span>
+			</label>
 			{ selected && subOptionsComponent && (
 				<div className="woocommerce-profiler-choice-sub-options">
 					{ subOptionsComponent }
